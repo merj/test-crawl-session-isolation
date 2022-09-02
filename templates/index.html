@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{.PageTitle}}</title>
+    </head>
+    <body>
+        <h1>{{.PageTitle}}</h1>
+        <ul>
+        {{range .Tests}}
+            <li><a href="/testpage/{{.}}">Test Page {{.}}</a></li>
+        {{end}}
+    </ul>
+    </body>
+</html>
