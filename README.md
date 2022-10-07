@@ -43,10 +43,12 @@ The server will be listening at port 9007.
 
 The output folder will contains the `output.log` file.
 
-You can also see the effect of the tests in page content and page titles.
+If you can see the effect of the tests in the page content and page titles as well.
 
+### Page Content
 Page content will contains a list of failed tests.
 
+### Page Titles
 Page titles (e.g. `TestPage1`) will get failed tests appended:
 
 ```sh
