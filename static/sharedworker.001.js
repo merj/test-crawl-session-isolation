@@ -1,6 +1,7 @@
 const browserInstances = [];
 const messages = [];
 
+// Listen for new messages and forward them to the instances
 onconnect = function(e) {
   const port = e.ports[0];
   browserInstances.push(port);

@@ -154,6 +154,7 @@ func main() {
 	r.PathPrefix("/").Handler(http.FileServer(http.Dir("./static/")))
 	http.Handle("/", r)
 
+	// Server options
 	server := &http.Server{
 		Addr:              "0.0.0.0:9007",
 		Handler:           r,

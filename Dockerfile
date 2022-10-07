@@ -7,8 +7,10 @@ WORKDIR /
 COPY go.mod .
 COPY go.sum .
 
+# Download modules
 RUN go mod download
 
+# Copy all files in the working directory
 COPY . .
 
 # Build the Go app

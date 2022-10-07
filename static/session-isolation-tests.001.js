@@ -181,6 +181,7 @@ setInterval(() => {
 
 const dbName = "SessionIsolationTest";
 
+// Create or connect to the database
 function idbConn(){
     const request = indexedDB.open(dbName, 1);
     request.onupgradeneeded = event => {
@@ -240,4 +241,4 @@ function fibonacci(index){
 }
 
 // Slow down the load of the page by using a fibonacci loop
-fibonacci(42)
+fibonacci(45)
