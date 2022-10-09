@@ -1,4 +1,4 @@
-FROM golang:1.18-alpine AS build_base
+FROM golang:alpine AS build
 
 # Set the Current Working Directory inside the container
 WORKDIR /
@@ -10,14 +10,24 @@ COPY go.sum .
 # Download modules
 RUN go mod download
 
-# Copy all files in the working directory
-COPY . .
+# Copy all GO files in the working directory
+COPY *.go ./
 
 # Build the Go app
 RUN CGO_ENABLED=0 go build -o ./bin/session-isolation-test .
 
-# This container exposes port 9007 to the outside world
+# Build the final image from scratch
+FROM scratch
+
+# Copy the Go app from the build image
+COPY --from=build /bin/session-isolation-test ./bin/session-isolation-test
+
+# Copy templates and static files
+COPY ./static ./static
+COPY ./templates ./templates
+
+# This container exposes port 9007
 EXPOSE 9007
 
-# Run the binary program
+# Run the binary
 CMD ["/bin/session-isolation-test"]
